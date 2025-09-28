@@ -33,7 +33,6 @@ jobs:
         with:
           name: react-build
           path: build
-jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
