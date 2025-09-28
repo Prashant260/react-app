@@ -3,16 +3,18 @@ name: React CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0
         with:
-          publish-dir: ./build
+          publish-dir: .
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "deployed"
